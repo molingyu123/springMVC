@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--把对象的创建交给spring 来管理-->
+    <!--<bean id="accountService" class="com.lingyun.service.impl.IAccountServiceImpl"></bean>-->
+    <!--上面的bean 就是之前根据配置文件创建bean-->
+    <!--02 spring 对bean 管理细节-->
+    <!--
+      1. 创建bean 的三种方式
+      2.bean 对象的三种方式
+      3. bean 的生命周期
+    -->
+    <!--方式1
+      使用默认的构造函数创建，在spring 的配置文件中使用bean 标签，配以id 和class 属性
+      之后，且没有其它属性和标签时采用就是默认构造函数创建bean 对象，此时如果类中没有默认的构造函数
+      则无法创建对象
+    -->
+    <!--<bean id="accountService" class="com.lingyun.service.impl.IAccountServiceImpl"></bean>-->
+
+    <!--方式二
+       使用普通工厂中的方法创建对象,(使用某个类中的方法创建对象，并存入spring 容器中)
+
+     -->
+    <!--<bean id="instanceFactory" class="com.lingyun.factory.InstanceFactory"></bean>-->
+
+    <!--<bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountSrevice"></bean>-->
+
+    <!--方式三 使用静态工厂中的静态方法创建对象（使用某个类中的方法创建对象,并存入spring容器-->
+    <bean id="accountService" class="com.lingyun.factory.StaticFactory" factory-method="getAccountSrevice"></bean>
+
+</beans>
