@@ -16,4 +16,12 @@ public class IAccountServiceImpl implements IAccountService {
     public  void IAccountService() {
         System.out.println("业务层处理数据");
     }
+
+    public void init(){
+        System.out.println("对象初始化了");
+    }
+
+    public void destroy(){
+        System.out.println("对象销毁了");
+    }
 }

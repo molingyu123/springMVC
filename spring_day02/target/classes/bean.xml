@@ -28,6 +28,33 @@
     <!--<bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountSrevice"></bean>-->
 
     <!--方式三 使用静态工厂中的静态方法创建对象（使用某个类中的方法创建对象,并存入spring容器-->
-    <bean id="accountService" class="com.lingyun.factory.StaticFactory" factory-method="getAccountSrevice"></bean>
+    <!--<bean id="accountService" class="com.lingyun.factory.StaticFactory" factory-method="getAccountSrevice"></bean>-->
+
+    <!--bean 的范围调整演示
+       scope属性：
+           作用表明作用范围
+           取值：
+              singleton  单列同时也是默认值
+              prototype   多列
+              request   作用于web 应用请求范围
+              session   作用于web 应用的会话范围
+              global-session  作用集群会话范围 当不是集群环境时和上面session 一样
+    -->
+    <!--<bean id="accountService" class="com.lingyun.service.impl.IAccountServiceImpl" scope="prototype"></bean>-->
+
+    <!--bean 的生命周期首先分清楚时
+      单列对象还是多列对象
+       单列对象：
+          出生 当容器创建是对象出生
+          活着 容器一直存在就一直存在
+          死亡 容器销毁了对象就删除了
+       多列对象
+          出生 当我们使用对象时 spring 创建
+          活着  对象只要一直在使用过程种就存在
+          死亡 当对象长时间不用由java GC 回收
+   -->
+
+    <bean id="accountService" class="com.lingyun.service.impl.IAccountServiceImpl" scope="prototype"
+     init-method="init" destroy-method="destroy"></bean>
 
 </beans>
