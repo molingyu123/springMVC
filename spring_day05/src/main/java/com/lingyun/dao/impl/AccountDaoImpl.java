@@ -13,8 +13,6 @@ import java.util.List;
 @Repository
 public class AccountDaoImpl implements AccountDao {
 
-
-
     @Autowired
     private QueryRunner runner;
 

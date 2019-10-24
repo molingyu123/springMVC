@@ -9,15 +9,6 @@
 
     <!--开启扫描注解告诉 spring 容器去哪个包下去寻找-->
        <context:component-scan base-package="com.lingyun"/>
-
-    <!--&lt;!&ndash;使用配置xml 方式&ndash;&gt;-->
-    <!--<bean id="accountService" class="com.lingyun.service.impl.AccountServiceImpl">-->
-        <!--&lt;!&ndash;注入dao&ndash;&gt;-->
-        <!--<property name="accountDao" ref="accountDao"/>-->
-    <!--</bean>-->
-    <!--<bean id="accountDao" class="com.lingyun.dao.impl.AccountDaoImpl">-->
-        <!--<property name="runner" ref="runner"/>-->
-    <!--</bean>-->
     <!--每次使用这个对象都是个新的对象-->
     <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
         <!--注入数据源-->

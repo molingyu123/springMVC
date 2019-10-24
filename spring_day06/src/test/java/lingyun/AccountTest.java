@@ -2,25 +2,36 @@ package lingyun;
 
 import com.lingyun.bean.Account;
 import com.lingyun.service.AccountService;
-import org.junit.After;
-import org.junit.Before;
+import config.SpringConfiguration;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 
 import java.util.List;
 
 /**
  * 测试
+ * spring 整合junit 测试
+ *   1.导入spring 整合junit 的jar包(坐标)
+ *   2.使用junit 提供的一个注解，把原有的main方法替换成spring 提供的
+ *    @Runnwith
+ *   3.告诉spring的运行器spring 和ioc 创建时基于xml 还是注解的并且说明位置
+ *    @ContextConfiguration
+ *      locations:只当xml文件位置，加上classpath 关键字，表示再类路径下
+ *      classes:指定注解类所在地位置--表明是使用注解配置
+ * 当我们使用spring5.x版本的时候junit jar 必须是4.12及以上
+ *
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = SpringConfiguration.class)
 public class AccountTest {
-    private ApplicationContext ac;
+
+    @Autowired
     private AccountService accountService;
-    @Before
-    public void before(){
-        ac = new ClassPathXmlApplicationContext("bean.xml");
-        accountService = ac.getBean("accountService",AccountService.class);
-    }
+
     @Test
     public void testFindAll() {
         List<Account> accounts=accountService.findAllAccount();
@@ -59,9 +70,5 @@ public class AccountTest {
         for(Account account:accounts){
             System.out.println(account);
         }
-    }
-    @After
-    public void closeInit(){
-        ((ClassPathXmlApplicationContext) ac).close();
     }
 }

@@ -1,12 +1,7 @@
 package config;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.apache.commons.dbutils.QueryRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.*;
 
 /**
  * 该类是个配置类和bean.xml 是属于同样的功能
@@ -26,38 +21,24 @@ import javax.sql.DataSource;
  *     细节：
  *       当我们使用注解配置方法时，如果方法有参数，spring会去容器中查找有没有可用的bean 对象
  *       查找的方式和Autowired 注解的作用是一样的，自动按照类型匹配注入，
+ * @Import：
+ *    作用：导入其它的配置类
+ *    属性：
+ *      value:用于指定其它配置类的字节码当我们使用Import 的注解后，有Import注解的累，就是父配置类
+ *            导入的就是配置类
+ * @PropertySource
+ *   作用：用于指定properties文件的位置
+ *   属性：
+ *    value:指定文件的名称和路径 关键字classpath,表示类路径下
+ *
  *
  */
+@Qualifier
 @Configuration
-@ComponentScan(basePackages = "com.lingyun")
+@ComponentScan("com.lingyun")
+@Import(JdbcConfig.class)
+@PropertySource("classpath:jdbcConfig.properties")
 public class SpringConfiguration {
 
-    /**
-     * 用于创建一个QueryRunner 对象
-     * @param dataSource
-     * @return
-     */
-    @Bean(name = "runner")
-    public QueryRunner createQueryRunner(DataSource dataSource){
-        return  new QueryRunner(dataSource);
-    }
-
-    /**
-     * 创建数据源对象
-     * @return
-     */
-    @Bean("dataSource")
-    public DataSource createDataSource(){
-        try {
-            ComboPooledDataSource dataSource = new ComboPooledDataSource();
-            dataSource.setDriverClass("com.mysql.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/demo");
-            dataSource.setUser("root");
-            dataSource.setPassword("123456");
-            return dataSource;
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
-    }
 
 }

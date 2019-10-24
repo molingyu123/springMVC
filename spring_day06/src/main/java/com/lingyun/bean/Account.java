@@ -1,10 +1,13 @@
 package com.lingyun.bean;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
 /**
  * 账户实体类
  */
+@Component
 public class Account  implements Serializable {
     private Integer id;
     private String name;

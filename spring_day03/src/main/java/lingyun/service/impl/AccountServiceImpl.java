@@ -72,14 +72,16 @@ import javax.annotation.Resource;
  *    对应 xml 中使用的初始化方法和销毁的方法
  */
 @Repository(value="accountService")
-@Scope("prototype")
+@Scope("")
 public class AccountServiceImpl implements AccountService {
+
+
 
     @Resource(name = "accountDao1")
    private AccountDao accountDao;
 
    public AccountServiceImpl(){
-       System.out.println("对象被创建了");
+       System.out.println("初始化：");
    }
 
    @PostConstruct
@@ -94,6 +96,9 @@ public class AccountServiceImpl implements AccountService {
     public   void saveCount(){
         accountDao.save();
     }
+
+
+
 
 
 }

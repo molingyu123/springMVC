@@ -12,9 +12,10 @@ public class TestController {
         // 演示上面的三个实现类的传参方式
         ClassPathXmlApplicationContext ac =new ClassPathXmlApplicationContext("bean.xml");
         AccountService accountService =(AccountService) ac.getBean("accountService");
-//        AccountService accountService2 =(AccountService) ac.getBean("accountService");
-//        accountService.saveCount();
-        accountService.saveCount();
+        AccountService accountService2 =(AccountService) ac.getBean("accountService");
+        System.out.println(accountService);
+        System.out.println(accountService2);
+        System.out.println(accountService==accountService2);
         ac.close();
     }
 }
