@@ -1,14 +1,10 @@
 package com.lingyun.cglib;
 
-import com.lingyun.proxy.IProducer;
 import com.lingyun.proxy.Producer;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
  * 模拟一个消费者
