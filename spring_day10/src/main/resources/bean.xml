@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--配置spring ioc-->
+    <bean id="accountService" class="com.lingyun.AccountServiceImpl"></bean>
+
+    <!--通知的bean-->
+    <bean id="logger" class="com.ling.util.Logger"></bean>
+
+    <!--配置aop-->
+    <aop:config>
+        <!--配置切入点表达式 id属性用于指定表达式的唯一标识，expression属性用于指定表达式内容
+              此标签写在aop:aspect 标签内部只能当前切面使用
+              还可以写在aop:aspect 标签的外部写，此时就可以让所有的切面使用
+            -->
+        <aop:pointcut id="pt1" expression="execution(* *.*.AccountServiceImpl.saveAccount())"/>
+        <!--配置切面-->
+        <aop:aspect id="logAdvice" ref="logger">
+            <!--配置通知的类型，并且建立通知方法和切入点的方法的关联-->
+            <!--这个是单一的方法-->
+            <!--前置通知 在切入点方法执行前执行-->
+            <!--<aop:before method="beforePrintLog" pointcut-ref="pt1"/>-->
+            <!--后置通知 在切入点方法正常执行 后执行 后置通知和异常通知只会执行其中的一个看切入点的方法是否正常执行-->
+            <!--<aop:after-returning method="afterPrintLog" pointcut-ref="pt1"/>-->
+            <!--异常通知 在切入点方法正常执行产生异常后执行-->
+            <!--<aop:after-throwing method="afterThrowPrintLog" pointcut-ref="pt1" />-->
+            <!--最终通知 无论切入点的方法是否正常 执行最终都会执行-->
+            <!--<aop:after method="overPrintLOg" pointcut-ref="pt1"/>-->
+
+            <!--配置环绕通知-->
+            <aop:around method="aroundPrintLog" pointcut-ref="pt1"/>
+
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>
