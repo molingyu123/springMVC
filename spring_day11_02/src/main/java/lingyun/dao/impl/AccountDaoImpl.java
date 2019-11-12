@@ -7,21 +7,21 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
-public class AccountDaoImpl implements AccountDao {
+public class AccountDaoImpl extends ParentJdbcTemaplate implements AccountDao {
 
-    private JdbcTemplate jdbcTemplate;
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+//    private JdbcTemplate jdbcTemplate;
+//
+//    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//    }
 
     public Account findByAccountById(Integer id) {
-       List<Account> accounts= jdbcTemplate.query("select * from account where id=?",new BeanPropertyRowMapper<Account>(Account.class),id);
+       List<Account> accounts= super.getJdbcTemplate().query("select * from account where id=?",new BeanPropertyRowMapper<Account>(Account.class),id);
        return accounts.isEmpty()?null:accounts.get(0);
     }
 
     public Account findByName(String name) {
-        List<Account> accounts= jdbcTemplate.query("select * from account where name=?",new BeanPropertyRowMapper<Account>(Account.class),name);
+        List<Account> accounts= super.getJdbcTemplate().query("select * from account where name=?",new BeanPropertyRowMapper<Account>(Account.class),name);
         if(accounts.isEmpty()){
             return  null;
         }
@@ -32,6 +32,6 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     public void updateAccount(Account account) {
-       jdbcTemplate.update("update account set name=? ,money=? where id=?",account.getName(),account.getMoney(),account.getId());
+       super.getJdbcTemplate().update("update account set name=? ,money=? where id=?",account.getName(),account.getMoney(),account.getId());
     }
 }

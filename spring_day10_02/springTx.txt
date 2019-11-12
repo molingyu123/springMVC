@@ -1,0 +1,45 @@
+spring 配置事务的步骤：
+  pom.xml：
+     导入坐标依赖:
+         管理事务配置
+             <dependency>
+                  <groupId>org.springframework</groupId>
+                  <artifactId>spring-tx</artifactId>
+                  <version>5.1.8.RELEASE</version>
+              </dependency>
+          配合切面表达式：
+               <dependency>
+                      <groupId>org.aspectj</groupId>
+                      <artifactId>aspectjweaver</artifactId>
+                      <version>1.9.2</version>
+                  </dependency>
+
+  xml配置的方式：声明式配置
+     1.配置事务管理器
+     2.配置事务的通知
+           第一要配置xml 事务的约束tx名称空间和约束，同时也需要aop 的使用
+           tx:advice标签配置事务的通知
+                属性：
+                   id: 给事务通知起一个唯一标识
+                   transaction-manager:给事务通知提供一个事务管理器的引用
+     3.配置aop 中通用的切入点表达式：
+     4.建立事务通知和切入点表达式的对应关系<aop:advisor advice-ref="事务通知的id" pointcut-ref="切入点表达式id">
+     5.配置事务的属性
+          在事务的通知tx:advice 标签的内部
+          <tx:attributes>
+             <tx:method name=""/>
+          </tx:attributes>
+        isolation:用于指定事务的隔离级别，默认值是default 表示使用数据库的隔离级别
+        no-rollback-for：用于指定一个异常，当产生该异常时，事务不回滚，产生其它异常时，事务回滚，没有默认值，表示任何异常都回滚
+        rollback-for:用于指定一个异常，当产生该异常时，事务回滚，产生其它异常时，事务不回滚，没有默认值，表示任何异常都回滚
+        propageation:用于指定事务的传播行为，默认值是REQUIRED,表示一定会有事务，增删改的选择，查询方法可以选择SUPPORTS
+        read-only:用于指定事务是否只读，只有查询方法才能设置为true,默认值是false 表示读写
+        timeout:用于指定事务的超时时间，默认值是-1，表示永不超时，如果指定了数值，以秒为单位
+
+
+        spring 注解配置的方式：
+           1.配置事务管理器
+           2.开启spring 对注解事务的支持
+           <tx:annotation-driven transaction-manager="transactionManager"/>
+           3.在需要事务支持的地方使用事务支持的注解 @Transactional
+
