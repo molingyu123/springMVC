@@ -1,5 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: mly
+  Date: 2019/11/24
+  Time: 19:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
+    <title>Title</title>
+</head>
 <body>
-<h2>Hello World!</h2>
+   <h3>入门案列</h3>
+   <%--里面是请求地址的路径--%>
+   <a href="/hello">入门程序</a>
 </body>
 </html>
