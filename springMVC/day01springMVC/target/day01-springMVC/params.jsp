@@ -19,6 +19,12 @@
        金额:<input type="number" name="money"><br>
        用户名：<input type="text" name="User.clientName"><br>
        性别：<input type="text" name="User.sex"><br>
+
+       用户名：<input type="text" name="list[0].clientName"><br>
+       性别：<input type="text" name="list[0].sex"><br>
+
+       用户名：<input type="text" name="map['one'].clientName"><br>
+       性别：<input type="text" name="map['one'].sex"><br>
        <input type="submit" value="提交">
    </form>
 </body>

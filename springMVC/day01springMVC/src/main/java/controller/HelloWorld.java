@@ -21,6 +21,7 @@ public class HelloWorld {
     }
 
     /**
+     *  value 参数 和patH 是相同的
      *  path 参数 表明指定的路径
      *  params 参数 表明传入的参数必须相同否则请求失败
      *  method 参数 表明传入的方法必须是post 类型的请求
