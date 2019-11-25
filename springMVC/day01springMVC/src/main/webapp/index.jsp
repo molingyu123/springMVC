@@ -13,6 +13,8 @@
 <body>
    <h3>入门案列</h3>
    <%--里面是请求地址的路径--%>
-   <a href="/hello">入门程序</a>
+   <a href="/test/hello">入门程序</a>
+   <br>
+   <a href="/test/requestMapping?username=hh">requestMapping 注解演示多级路径</a>
 </body>
 </html>

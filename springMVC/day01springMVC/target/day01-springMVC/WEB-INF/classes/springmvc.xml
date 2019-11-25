@@ -22,7 +22,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--开启springmvc 注解支持-->
+    <!--开启springmvc 注解支持 这个注解配置同时也就意味着，映射处理器，适配处理器，视图解析器都配置完成了-->
     <mvc:annotation-driven/>
 
 </beans>
