@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * user 用户
@@ -10,6 +11,7 @@ public class User implements Serializable {
 
     private  String clientName;
     private String sex;
+    private Date date;
 
     public String getClientName() {
         return clientName;
@@ -27,8 +29,16 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "clientName='" + clientName + '\'' + ", sex='" + sex + '\'' + '}';
+        return "User{" + "clientName='" + clientName + '\'' + ", sex='" + sex + '\'' + ", date=" + date + '}';
     }
 }

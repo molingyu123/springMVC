@@ -27,5 +27,7 @@
        性别：<input type="text" name="map['one'].sex"><br>
        <input type="submit" value="提交">
    </form>
+
+
 </body>
 </html>

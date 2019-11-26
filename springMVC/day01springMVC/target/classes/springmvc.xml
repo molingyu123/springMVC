@@ -22,7 +22,17 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--配置自定义类型转换器-->
+    <bean id="conversionServiceFactoryBean" class="org.springframework.context.support.ConversionServiceFactoryBean">
+       <property name="converters">
+           <set>
+               <bean class="utils.StringToDate"></bean>
+           </set>
+       </property>
+    </bean>
+
     <!--开启springmvc 注解支持 这个注解配置同时也就意味着，映射处理器，适配处理器，视图解析器都配置完成了-->
-    <mvc:annotation-driven/>
+    <!--我们需要添加一个自定义类型转换的服务-->
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean"/>
 
 </beans>
