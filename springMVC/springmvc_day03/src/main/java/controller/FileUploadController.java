@@ -93,7 +93,7 @@ public class FileUploadController {
         String fileName = upload.getOriginalFilename();
         // 生成唯一 名字
         String uuid = UUID.randomUUID().toString().replace("-","");
-        fileName=uuid+fileName;
+        fileName=uuid+"_"+fileName;
 
         // 创建客户端对象
         Client client = Client.create();

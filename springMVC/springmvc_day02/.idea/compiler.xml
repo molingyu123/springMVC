@@ -9,6 +9,7 @@
         <module name="fileuploadServer" />
         <module name="springmvc_day02" />
         <module name="springmvc_day03" />
+        <module name="springmvc_day04_exception" />
         <module name="uploadFileServer" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
       <module name="fileuploadServer" target="1.5" />
       <module name="springmvc_day02" target="1.8" />
       <module name="springmvc_day03" target="1.8" />
+      <module name="springmvc_day04_exception" target="1.8" />
       <module name="uploadFileServer" target="1.7" />
     </bytecodeTargetLevel>
   </component>
