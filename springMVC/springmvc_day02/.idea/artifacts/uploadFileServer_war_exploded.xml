@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="uploadFileServer:war exploded">
+    <output-path>$PROJECT_DIR$/../uploadFileServer/target/springmvc_day03</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="uploadFileServer" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../uploadFileServer/target/springmvc_day03/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="uploadFileServer/web/Web" />
+    </root>
+  </artifact>
+</component>

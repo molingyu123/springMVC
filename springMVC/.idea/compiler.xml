@@ -6,14 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="day01springMVC" />
-        <module name="springmvc_day02" />
+        <module name="springMVC_day02" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="day01springMVC" target="1.8" />
       <module name="my_springmvc_day01" target="1.5" />
+      <module name="spring_day03_file_upload" target="1.8" />
+      <module name="springfile_upload" target="1.8" />
+      <module name="springFileUpload" target="1.8" />
       <module name="springMVC" target="1.5" />
       <module name="springMVC_day01" target="1.8" />
+      <module name="springMVC_day02" target="1.8" />
+      <module name="springmvc_day02" target="1.8" />
+      <module name="springMVCFile" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
