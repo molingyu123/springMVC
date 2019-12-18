@@ -11,6 +11,7 @@
         <module name="springmvc_day03" />
         <module name="springmvc_day04_exception" />
         <module name="springmvc_day05_interceptor" />
+        <module name="ssm" />
         <module name="uploadFileServer" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="springmvc_day03" target="1.8" />
       <module name="springmvc_day04_exception" target="1.8" />
       <module name="springmvc_day05_interceptor" target="1.8" />
+      <module name="ssm" target="1.8" />
       <module name="uploadFileServer" target="1.7" />
     </bytecodeTargetLevel>
   </component>
