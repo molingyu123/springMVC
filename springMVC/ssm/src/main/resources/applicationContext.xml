@@ -8,16 +8,51 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/spring-aop.xsd
+       http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
-    
     <!--开启注解扫描 只处理servcie 和dao-->
     <context:component-scan base-package="com.lingyun">
         <!--配置哪些注解不扫描-->
         <!--controller 注解交给springmvc 来控制-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
+    <!--spring 整合mybatis-->
+    <!--1.配置连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql:///ssmdemo"/>
+        <property name="user" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <!--2.配置sqlSessionFactory 工厂-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--3.配置持久层接口所在的包-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lingyun.dao"/>
+    </bean>
+
+    <!--配置spring声明式事务管理步骤-->
+    <!--1.配置事务管理器-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--2.配置事务通知-->
+    <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true" />
+            <tx:method name="*" isolation="DEFAULT"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--3.配置aop增强-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.lingyun.service.impl.*Serviceimpl.*(..))"/>
+    </aop:config>
 
 </beans>
