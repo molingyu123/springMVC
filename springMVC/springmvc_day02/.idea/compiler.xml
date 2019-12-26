@@ -17,6 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="fileuploadServer" target="1.5" />
+      <module name="redis01" target="1.5" />
       <module name="springmvc_day02" target="1.8" />
       <module name="springmvc_day03" target="1.8" />
       <module name="springmvc_day04_exception" target="1.8" />

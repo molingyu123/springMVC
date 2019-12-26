@@ -13,7 +13,7 @@
 
     <!--开启注解扫描-->
     <context:component-scan base-package="com.lingyun">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     
     <!--视图解析器-->
@@ -28,6 +28,5 @@
     <mvc:resources mapping="/images/**" location="/images/"/>
 
     <!--开启springmvc 注解扫描-->
-
     <mvc:annotation-driven/>
 </beans>
